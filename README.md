@@ -15,7 +15,7 @@ Dafür sendet Kn1 an Kn2 und Kn3 ein Route Request in folgendem Format:\
 RouteRequest Beispiel fur Kn1:\
 Source = Kn1\
 Dest = Kn2\
-Flag = 3,\
+F = Flag = 3,\
 T = TTL=10\
 EKn = Kn6\
 Ursp = Kn1\
@@ -28,7 +28,7 @@ H = Hops=0\
 RouteRequest Beispiel fur Kn5:\
 Source = Kn2\
 Dest = Kn5\
-Flag = 3,\
+F = Flag = 3,\
 T = TTL=9\
 EKn = Kn6\
 Ursp = Kn1\
@@ -44,7 +44,7 @@ Knoten6 schickt an Knoten1 ein Route Reply zurück.\
 RouteReply Beispiel fur Kn6:\
 Source = Kn6\
 Dest = Kn5\
-Flag = 4\
+F = Flag = 4\
 T = TTL=10\
 EKn = Kn1\
 Ursp = Kn6\
