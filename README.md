@@ -5,8 +5,11 @@ Spezifikation für unser Protokoll im Kurs TmS
 ### Netzwerkstruktur
 ![Netzwerk.jpeg](Netzwerk.jpeg)
 
-### Nachrichtenversand
+### Network discovery
+Nach der Knofiguration sendet der Knoten1 initial ein broadcast (z.B. alle 10 Sekunden bis 1 Adresse in der Tabelle steht) an alle erreichbaren Knoten bspw. Knoten2 und Knoten3 gleiches gilt umgekehrt Knoten2 u. 3 senden initial ein Hello an Knoten1 somit hat Knoten1 zwei Nachbarn. Eine trafficarme und sinnvolle Möglichkeit die aktive Route zu den Nachbarn zu halten (AODV RFC 6.9.), wäre mit intervallmäßigen Hello Paketen (alle 50 Sekunden). Diese Pakete sollen nicht weitergeroutet werden sondern sind nur für direkte Nachbarn gedacht (evtl. könnte die payload auch leer sein, da diese Pakete auch anhand des Flags erkannt werden). 
 
+
+### Nachrichtenversand
 #### Route Request (Flag=3)
 Knoten1 will an Knoten6 eine Nachricht schicken\
 
@@ -59,3 +62,10 @@ Kn2 Kann dann Kn6 in Tabelle eintragen, da Kn2 jetzt weiss irgendwo ist Kn6 und 
 #### Route Error
 
 Wenn Knoten2 nach 3 Route Requests an Knoten5 kein Route Reply bekommt wird Knoten5 aus der Tabelle gelöscht.\
+
+#### Route Tabelle
+Die Tabelle die jeder Knoten verwaltet müsste somit folgende Einträge haben:
+* Adresse des Zielknotens  
+* Adresse des nächsten Hops (Nachbarknoten)   
+* Hops (Qualität der Route)  
+ 
