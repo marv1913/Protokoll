@@ -1,3 +1,4 @@
+
 # Protokoll
 Spezifikation für unser Protokoll im Kurs TmS
 
@@ -24,38 +25,39 @@ EKn = Kn6\
 Ursp = Kn1\
 H = Hops=0\
 
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|\
-| Source|  Dest |F|T| EKn   |  Ursp |H|\
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|
+| source | destination |flag|ttl|EKn|Ursp|hops
 
 RouteRequest Beispiel fur Kn5:\
-Source = Kn2\
-Dest = Kn5\
-F = Flag = 3,\
-T = TTL=9\
+source = Kn2\
+destination = Kn5\
+flag = 3,\
+ttl = 9\
 EKn = Kn6\
 Ursp = Kn1\
-H = Hops=2\
+hops = 2
 
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|\
-| Source|  Dest |F|T| EKn   |  Ursp |H|\
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|
+| source | destination |flag|ttl|EKn|Ursp|hops
+
 
 #### Route Reply wäre unser ACK Paket (Flag=4)
 Knoten6 schickt an Knoten1 ein Route Reply zurück.\
 
 RouteReply Beispiel fur Kn6:\
-Source = Kn6\
-Dest = Kn5\
-F = Flag = 4\
-T = TTL=10\
+source = Kn6\
+destination = Kn5\
+flag = 4\
+ttl=10\
 EKn = Kn1\
 Ursp = Kn6\
-H = Hops=2\
+hops = 2
 
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|\
-| Source|  Dest |F|T| EKn   |  Ursp |H|\
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|
+| source | destination |flag|ttl|EKn|Ursp|hops
 
 Kn2 Kann dann Kn6 in Tabelle eintragen, da Kn2 jetzt weiss irgendwo ist Kn6 und ihn kann ich über Kn5 erreichen.\
 
