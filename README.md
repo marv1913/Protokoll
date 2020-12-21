@@ -55,7 +55,7 @@ hops = 2
 
 Kn2 Kann dann Kn6 in Tabelle eintragen, da Kn2 jetzt weiss irgendwo ist Kn6 und ihn kann ich über Kn5 erreichen.\
 
-#### Route Error
+#### Route Error (Flag=5)
 
 Wenn Knoten2 nach 3 Route Requests an Knoten5 kein Route Reply bekommt wird Knoten5 aus der Tabelle gelöscht.\
 
