@@ -6,23 +6,19 @@ Spezifikation für unser Protokoll im Kurs TmS
 ### Netzwerkstruktur
 ![Netzwerk.jpeg](Netzwerk.jpeg)
 
-### Network discovery
-Nach der Knofiguration sendet der Knoten1 initial ein broadcast (z.B. alle 10 Sekunden bis 1 Adresse in der Tabelle steht) an alle erreichbaren Knoten bspw. Knoten2 und Knoten3 gleiches gilt umgekehrt Knoten2 u. 3 senden initial ein Hello an Knoten1 somit hat Knoten1 zwei Nachbarn. Eine trafficarme und sinnvolle Möglichkeit die aktive Route zu den Nachbarn zu halten (AODV RFC 6.9.), wäre mit intervallmäßigen Hello Paketen (alle 50 Sekunden). Diese Pakete sollen nicht weitergeroutet werden sondern sind nur für direkte Nachbarn gedacht (evtl. könnte die payload auch leer sein, da diese Pakete auch anhand des Flags erkannt werden). 
-
 
 ### Nachrichtenversand
 #### Route Request (Flag=3)
 Knoten1 will an Knoten6 eine Nachricht schicken\
 
-Dafür sendet Kn1 an Kn2 und Kn3 ein Route Request in folgendem Format:\
+Dafür sendet Kn1 eine Route-Request als Broadcast-Nachricht an alle benachbarten Knoten in folgendem Format:\
 
 RouteRequest Beispiel fur Kn1:\
 Source = Kn1\
 Dest = Kn2\
 F = Flag = 3,\
 T = TTL=10\
-EKn = Kn6\
-Ursp = Kn1\
+Empfangsknoten = Kn6\
 H = Hops=0\
 
 |  |  |  |  |  |  |  |
@@ -30,12 +26,11 @@ H = Hops=0\
 | source | destination |flag|ttl|EKn|Ursp|hops
 
 RouteRequest Beispiel fur Kn5:\
-source = Kn2\
+source = Kn1\
 destination = Kn5\
 flag = 3,\
 ttl = 9\
-EKn = Kn6\
-Ursp = Kn1\
+Empfangsknoten = Kn6\
 hops = 2
 
 |  |  |  |  |  |  |  |
@@ -51,8 +46,7 @@ source = Kn6\
 destination = Kn5\
 flag = 4\
 ttl=10\
-EKn = Kn1\
-Ursp = Kn6\
+Empfangsknoten = Kn1\
 hops = 2
 
 |  |  |  |  |  |  |  |
@@ -69,5 +63,6 @@ Wenn Knoten2 nach 3 Route Requests an Knoten5 kein Route Reply bekommt wird Knot
 Die Tabelle die jeder Knoten verwaltet müsste somit folgende Einträge haben:
 * Adresse des Zielknotens  
 * Adresse des nächsten Hops (Nachbarknoten)   
-* Hops (Qualität der Route)  
+* Hops (Qualität der Route) 
+ 
  
